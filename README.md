@@ -91,3 +91,10 @@ AI-Crop-Disease-Detection/
 │
 ├── .gitignore
 └── README.md
+## 📸 Project Screenshots
+
+### 🏠 Home Page
+![AgroVision AI Home Page](screenshots/homepage.png)
+
+### 📊 Dashboard
+![AgroVision AI Dashboard](screenshots/dashboard.png)
