@@ -1,0 +1,355 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Crop Disease Detection Result</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="prediction-card">
+
+    <!-- ================= HEADER ================= -->
+
+    <h1>🌱 AI Crop Disease Detection</h1>
+
+    <p>
+        AI-powered analysis of your uploaded crop leaf
+    </p>
+
+
+    <!-- ================= IMAGE ================= -->
+
+    <img
+        src="{{ url_for('static', filename='uploads/' + image) }}"
+        class="prediction-image"
+        alt="Uploaded Crop Leaf"
+    >
+
+
+    <!-- ================= RESULT ================= -->
+
+    <h2>🦠 Disease Analysis</h2>
+
+    <div class="disease-name">
+        {{ disease }}
+    </div>
+
+    <div class="confidence">
+        📊 Confidence: {{ "%.2f"|format(confidence) }}%
+    </div>
+    <div class="confidence-bar-container">
+
+    <div class="confidence-bar">
+
+        <div
+            class="confidence-fill
+            {% if confidence >= 90 %}
+                confidence-high
+            {% elif confidence >= 75 %}
+                confidence-medium
+            {% else %}
+                confidence-low
+            {% endif %}"
+            style="width: {{ confidence }}%;">
+        </div>
+
+    </div>
+
+    <div class="confidence-scale">
+        <span>0%</span>
+        <span>100%</span>
+    </div>
+
+</div>
+
+
+
+    <!-- ================= CONFIDENCE MESSAGE ================= -->
+
+    {% if confidence >= 90 %}
+
+        <div class="result-status success">
+            ✅ High confidence prediction
+        </div>
+
+    {% elif confidence >= 75 %}
+
+        <div class="result-status medium">
+            ⚠️ Moderate confidence prediction
+        </div>
+
+    {% elif confidence >= 60 %}
+
+        <div class="result-status warning">
+            ⚠️ Low confidence prediction
+        </div>
+
+    {% else %}
+
+        <div class="result-status warning">
+            ⚠️ The AI is uncertain about this prediction
+        </div>
+
+    {% endif %}
+
+
+    <!-- ================= TREATMENT ================= -->
+
+    <div class="info-card">
+
+        <h2>💊 Recommended Treatment</h2>
+
+        {% if "Pepper__bell___Bacterial_spot" in disease %}
+
+            <p>
+                Remove severely infected leaves and avoid working with
+                wet plants. Use only a suitable copper-based bactericide
+                or other locally recommended treatment according to the
+                product label.
+            </p>
+
+        {% elif "Pepper__bell___healthy" in disease %}
+
+            <p>
+                ✅ The pepper plant appears healthy. Continue proper
+                watering, nutrition and regular disease monitoring.
+            </p>
+
+        {% elif "Potato___Early_blight" in disease %}
+
+            <p>
+                Remove infected leaves and plant debris. Improve air
+                circulation and use an appropriate fungicide according
+                to local agricultural recommendations.
+            </p>
+
+        {% elif "Potato___Late_blight" in disease %}
+
+            <p>
+                Remove infected plant material promptly. Avoid overhead
+                irrigation and use a locally recommended late-blight
+                fungicide according to the product label.
+            </p>
+
+        {% elif "Potato___healthy" in disease %}
+
+            <p>
+                ✅ The potato plant appears healthy. Continue regular
+                monitoring, balanced nutrition and proper irrigation.
+            </p>
+
+        {% elif "Tomato_Bacterial_spot" in disease %}
+
+            <p>
+                Remove badly infected leaves and avoid overhead watering.
+                Use disease-free planting material and a locally
+                recommended treatment if necessary.
+            </p>
+
+        {% elif "Tomato_Early_blight" in disease %}
+
+            <p>
+                Remove infected leaves and crop debris. Maintain good
+                spacing and use an appropriate fungicide according to
+                local agricultural recommendations.
+            </p>
+
+        {% elif "Tomato_Late_blight" in disease %}
+
+            <p>
+                Remove infected plant material and avoid wetting foliage.
+                Use a locally recommended fungicide promptly when disease
+                conditions are favorable.
+            </p>
+
+        {% elif "Tomato_Leaf_Mold" in disease %}
+
+            <p>
+                Improve ventilation and reduce humidity around plants.
+                Remove infected leaves and use an appropriate fungicide
+                if recommended locally.
+            </p>
+
+        {% elif "Tomato_Septoria_leaf_spot" in disease %}
+
+            <p>
+                Remove affected leaves and plant debris. Avoid overhead
+                watering and maintain good airflow around plants.
+            </p>
+
+        {% elif "Tomato_Spider_mites" in disease %}
+
+            <p>
+                Inspect the underside of leaves carefully. Remove badly
+                affected leaves and use an appropriate mite-control
+                treatment according to local recommendations.
+            </p>
+
+        {% elif "Tomato__Target_Spot" in disease %}
+
+            <p>
+                Remove infected leaves and maintain good air circulation.
+                Avoid excessive leaf wetness and use a suitable fungicide
+                when recommended.
+            </p>
+
+        {% elif "Tomato__Tomato_mosaic_virus" in disease %}
+
+            <p>
+                There is no simple cure for an established viral
+                infection. Remove severely infected plants and control
+                possible insect vectors. Use clean tools and healthy
+                planting material.
+            </p>
+
+        {% elif "Tomato__Tomato_YellowLeaf__Curl_Virus" in disease %}
+
+            <p>
+                Remove severely infected plants and control whiteflies,
+                which can spread the virus. Use healthy planting material
+                and follow local agricultural recommendations.
+            </p>
+
+        {% elif "Tomato_healthy" in disease %}
+
+            <p>
+                ✅ The tomato plant appears healthy. Continue regular
+                watering, balanced nutrition and disease monitoring.
+            </p>
+
+        {% else %}
+
+            <p>
+                Please consult a local agriculture expert before applying
+                any pesticide or treatment.
+            </p>
+
+        {% endif %}
+
+    </div>
+
+
+    <!-- ================= PREVENTION ================= -->
+
+    <div class="info-card">
+
+        <h2>🛡️ Prevention Tips</h2>
+
+        {% if "healthy" in disease.lower() %}
+
+            <ul>
+                <li>🌱 Use healthy planting material.</li>
+                <li>💧 Water plants appropriately.</li>
+                <li>🔍 Inspect leaves regularly.</li>
+                <li>🌬️ Maintain good air circulation.</li>
+                <li>🧹 Keep the growing area clean.</li>
+            </ul>
+
+        {% elif "Bacterial_spot" in disease %}
+
+            <ul>
+                <li>🌱 Use disease-free seeds and seedlings.</li>
+                <li>💧 Avoid overhead irrigation.</li>
+                <li>🍃 Remove infected leaves.</li>
+                <li>🧹 Sanitize gardening tools.</li>
+                <li>🔄 Practice crop rotation.</li>
+            </ul>
+
+        {% elif "Early_blight" in disease %}
+
+            <ul>
+                <li>🍃 Remove infected leaves.</li>
+                <li>💧 Avoid prolonged leaf wetness.</li>
+                <li>🌬️ Maintain good plant spacing.</li>
+                <li>🧹 Remove crop debris.</li>
+                <li>🔄 Practice crop rotation.</li>
+            </ul>
+
+        {% elif "Late_blight" in disease %}
+
+            <ul>
+                <li>🔍 Monitor plants regularly.</li>
+                <li>💧 Avoid overhead watering.</li>
+                <li>🌬️ Improve air circulation.</li>
+                <li>🍃 Remove infected plant material.</li>
+                <li>🧹 Keep the field free of infected debris.</li>
+            </ul>
+
+        {% elif "Leaf_Mold" in disease %}
+
+            <ul>
+                <li>🌬️ Improve ventilation.</li>
+                <li>💧 Reduce excessive humidity.</li>
+                <li>🍃 Remove infected leaves.</li>
+                <li>📏 Maintain proper plant spacing.</li>
+            </ul>
+
+        {% elif "Spider_mites" in disease %}
+
+            <ul>
+                <li>🔍 Regularly inspect leaf undersides.</li>
+                <li>🌿 Remove heavily infested leaves.</li>
+                <li>🧹 Keep weeds under control.</li>
+                <li>🐞 Protect beneficial insects where possible.</li>
+            </ul>
+
+        {% elif "mosaic_virus" in disease or "YellowLeaf" in disease %}
+
+            <ul>
+                <li>🌱 Use healthy planting material.</li>
+                <li>🧹 Remove infected plants promptly.</li>
+                <li>🧼 Disinfect gardening tools.</li>
+                <li>🦟 Monitor and control insect vectors.</li>
+                <li>🔍 Inspect new plants before introducing them.</li>
+            </ul>
+
+        {% else %}
+
+            <ul>
+                <li>🌱 Use healthy planting material.</li>
+                <li>💧 Avoid excessive watering.</li>
+                <li>🍃 Remove infected leaves.</li>
+                <li>🌬️ Maintain good air circulation.</li>
+                <li>🔍 Monitor crops regularly.</li>
+            </ul>
+
+        {% endif %}
+
+    </div>
+
+
+    <!-- ================= ACTION BUTTONS ================= -->
+
+    <div class="result-actions">
+
+        <a href="/dashboard" class="back-dashboard">
+            ⬅ Back to Dashboard
+        </a>
+
+        <a href="/upload" class="back-dashboard">
+    🔄 Analyze Another Leaf
+</a>
+    </div>
+
+
+    <!-- ================= DISCLAIMER ================= -->
+
+    <p class="prediction-note">
+        ⚠️ This AI prediction is intended as a decision-support tool.
+        For serious crop disease problems, consult a qualified
+        agricultural expert before applying treatments.
+    </p>
+
+</div>
+
+</body>
+</html>
+```

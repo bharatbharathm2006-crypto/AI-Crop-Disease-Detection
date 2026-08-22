@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AgroVision - Weather Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+
+        body {
+            background: #f4fff4;
+            font-family: Arial, sans-serif;
+            color: #1f2937;
+        }
+
+        .weather-container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .weather-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .weather-header h1 {
+            color: #166534;
+            font-size: 36px;
+            font-weight: 700;
+        }
+
+        .weather-header p {
+            color: #6b7280;
+            font-size: 17px;
+        }
+
+        .weather-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+
+        .weather-icon {
+            font-size: 70px;
+            margin-bottom: 10px;
+        }
+
+        .temperature {
+            font-size: 52px;
+            font-weight: 700;
+            color: #166534;
+        }
+
+        .location {
+            font-size: 22px;
+            font-weight: 600;
+            margin: 10px 0;
+        }
+
+        .weather-description {
+            color: #6b7280;
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        .weather-details {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .weather-detail {
+            background: #f0fdf4;
+            padding: 20px;
+            border-radius: 15px;
+        }
+
+        .weather-detail .icon {
+            font-size: 30px;
+        }
+
+        .weather-detail h4 {
+            color: #166534;
+            margin: 10px 0 5px;
+        }
+
+        .weather-detail p {
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .crop-advice {
+            margin-top: 30px;
+            background: white;
+            border-left: 5px solid #16a34a;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.07);
+        }
+
+        .crop-advice h2 {
+            color: #166534;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 25px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 9px;
+            font-weight: 600;
+        }
+
+        .back-button:hover {
+            background: #1d4ed8;
+            color: white;
+        }
+
+        @media (max-width: 700px) {
+
+            .weather-details {
+                grid-template-columns: 1fr;
+            }
+
+            .weather-header h1 {
+                font-size: 28px;
+            }
+
+            .temperature {
+                font-size: 42px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="weather-container">
+
+    <!-- HEADER -->
+
+    <div class="weather-header">
+
+        <h1>🌦️ Weather Dashboard</h1>
+
+        <p>
+            Weather information to help farmers monitor crop conditions
+        </p>
+
+    </div>
+
+
+    <!-- CURRENT WEATHER -->
+
+    <div class="weather-card">
+
+        <div class="weather-icon">
+            🌤️
+        </div>
+
+        <div class="location">
+    📍 Bengaluru, Karnataka
+</div>
+
+        <div class="temperature">
+    {{ temperature }}°C
+</div>
+
+        <div class="weather-description">
+    {{ condition }}
+</div>
+
+
+        <!-- WEATHER DETAILS -->
+
+        <div class="weather-details">
+
+            <div class="weather-detail">
+
+                <div class="icon">
+                    💧
+                </div>
+
+                <h4>Humidity</h4>
+
+<p>{{ humidity }} %</p>
+
+            </div>
+
+
+            <div class="weather-detail">
+
+                <div class="icon">
+                    💨
+                </div>
+
+                <h4>Wind Speed</h4>
+
+<p>{{ wind_speed }} km/h</p>
+
+            </div>
+
+
+            <div class="weather-detail">
+
+                <div class="icon">
+                    🌧️
+                </div>
+
+                <h4>Rainfall</h4>
+
+<p>{{ rainfall_probability }} %</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- FARMER ADVICE -->
+
+    <div class="crop-advice">
+
+        <h2>
+            🌱 Crop Advisory
+        </h2>
+
+        <p>
+            Weather conditions can affect crop growth, irrigation,
+            disease development and pesticide application.
+        </p>
+
+        <ul>
+
+            <li>
+                💧 Check soil moisture before irrigation.
+            </li>
+
+            <li>
+                🌧️ Avoid unnecessary irrigation during rainfall.
+            </li>
+
+            <li>
+                🌬️ Monitor strong winds before spraying pesticides.
+            </li>
+
+            <li>
+                🔍 Check crops regularly during humid conditions.
+            </li>
+
+        </ul>
+
+    </div>
+
+
+    <!-- BACK BUTTON -->
+
+    <div style="text-align:center;">
+
+        <a href="/dashboard" class="back-button">
+            ⬅ Back to Dashboard
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

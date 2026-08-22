@@ -1,0 +1,631 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AgroVision - Farmer Dashboard</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/dashboard.css') }}">
+          
+</head>
+
+<body>
+
+<!-- ================= TOP NAVIGATION ================= -->
+
+<nav class="dashboard-navbar">
+
+    <div class="container">
+
+        <div class="brand">
+            🌱 AgroVision
+        </div>
+
+        <div class="nav-actions">
+
+            <a href="/profile" class="profile-link">
+                👤 Profile
+            </a>
+
+            <a href="/logout" class="logout-btn">
+                Logout
+            </a>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- ================= MAIN DASHBOARD ================= -->
+
+<div class="container dashboard-container">
+
+
+    <!-- ================= WELCOME ================= -->
+
+    <div class="welcome-section">
+
+        <h1>
+            👨‍🌾 Welcome to Farmer Dashboard
+        </h1>
+
+        <p>
+            AI-powered crop disease detection and monitoring
+        </p>
+
+    </div>
+
+
+    <!-- ================= STATISTICS ================= -->
+
+    <div class="row g-4">
+
+
+        <!-- TOTAL PREDICTIONS -->
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    📊
+                </div>
+
+                <div>
+
+                    <h5>
+                        Total Predictions
+                    </h5>
+
+                    <h2>
+                        {{ total_predictions }}
+                    </h2>
+
+                    <p>
+                        AI analyses completed
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- HEALTHY PLANTS -->
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="stat-card healthy-card">
+
+                <div class="stat-icon">
+                    🌱
+                </div>
+
+                <div>
+
+                    <h5>
+                        Healthy Plants
+                    </h5>
+
+                    <h2>
+                        {{ healthy_plants }}
+                    </h2>
+
+                    <p>
+                        Healthy predictions
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- DISEASED PLANTS -->
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="stat-card disease-card">
+
+                <div class="stat-icon">
+                    🦠
+                </div>
+
+                <div>
+
+                    <h5>
+                        Diseased Plants
+                    </h5>
+
+                    <h2>
+                        {{ diseased_plants }}
+                    </h2>
+
+                    <p>
+                        Need attention
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- CONFIDENCE -->
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="stat-card confidence-card">
+
+                <div class="stat-icon">
+                    🎯
+                </div>
+
+                <div>
+
+                    <h5>
+                        Avg. Confidence
+                    </h5>
+
+                    <h2>
+                        {{ average_confidence }}%
+                    </h2>
+
+                    <p>
+                        AI prediction confidence
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= QUICK ACTIONS ================= -->
+
+    <div class="section-title">
+
+        <h2>
+            🚀 Quick Actions
+        </h2>
+
+        <p>
+            Choose an action to manage your crops
+        </p>
+
+    </div>
+
+
+    <div class="row g-4">
+
+
+        <!-- UPLOAD LEAF -->
+
+        <div class="col-lg-4 col-md-6">
+
+            <div class="action-card">
+
+                <div class="action-icon">
+                    📷
+                </div>
+
+                <h3>
+                    Analyze Crop Leaf
+                </h3>
+
+                <p>
+                    Upload a crop leaf image and let AI
+                    identify possible diseases.
+                </p>
+
+                <a href="/upload"
+                   class="action-btn green-btn">
+
+                    🔍 Analyze Leaf
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- HISTORY -->
+
+        <div class="col-lg-4 col-md-6">
+
+            <div class="action-card">
+
+                <div class="action-icon">
+                    📜
+                </div>
+
+                <h3>
+                    Prediction History
+                </h3>
+
+                <p>
+                    View your previous crop disease
+                    predictions and confidence scores.
+                </p>
+
+                <a href="/history"
+                   class="action-btn blue-btn">
+
+                    📊 View History
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- PROFILE -->
+
+<div class="col-lg-4 col-md-6">
+
+    <div class="action-card">
+
+        <div class="action-icon">
+            👤
+        </div>
+
+        <h3>
+            Farmer Profile
+        </h3>
+
+        <p>
+            View your account information and
+            farmer details.
+        </p>
+
+        <a href="/profile"
+           class="action-btn purple-btn">
+
+            👤 View Profile
+
+        </a>
+
+    </div>
+
+</div>
+
+
+<!-- WEATHER -->
+
+<div class="col-lg-4 col-md-6">
+
+    <div class="action-card">
+
+        <div class="action-icon">
+            🌦️
+        </div>
+
+        <h3>
+            Weather Dashboard
+        </h3>
+
+        <p>
+            Check current weather conditions
+            to help monitor your crops.
+        </p>
+
+        <a href="/weather"
+           class="action-btn blue-btn">
+
+            🌤️ View Weather
+
+        </a>
+
+    </div>
+
+</div>
+
+
+<!-- AI CHAT ASSISTANT -->
+
+<div class="col-lg-4 col-md-6">
+
+    <div class="action-card">
+
+        <div class="action-icon">
+            🤖
+        </div>
+
+        <h3>
+            AI Chat Assistant
+        </h3>
+
+        <p>
+            Ask questions about crop diseases,
+            prevention, irrigation and farming.
+        </p>
+
+        <a href="/chat"
+           class="action-btn purple-btn">
+
+            💬 Ask AI Assistant
+
+        </a>
+
+    </div>
+
+</div>
+
+<!-- NOW close the row -->
+</div>
+    <!-- ================= DISEASE ANALYTICS ================= -->
+
+<div class="section-title">
+
+    <h2>
+        📊 Disease Analytics
+    </h2>
+
+    <p>
+        Overview of detected crop diseases
+    </p>
+
+</div>
+
+
+<div class="analytics-card">
+
+    <div class="analytics-header">
+
+        <div>
+            <h3>🦠 Prediction Breakdown</h3>
+
+            <p>
+                Number of predictions for each detected condition
+            </p>
+        </div>
+
+    </div>
+
+
+    {% if disease_counts %}
+
+        <div class="disease-list">
+
+            {% for disease, count in disease_counts %}
+
+                <div class="disease-row">
+
+                    <div class="disease-info">
+
+                        <span class="disease-name">
+                            {{ disease }}
+                        </span>
+
+                        <span class="disease-count">
+                            {{ count }}
+                        </span>
+
+                    </div>
+
+
+                    <div class="disease-bar">
+
+                        <div
+                            class="disease-progress"
+                            style="width: {{ (count / total_predictions * 100) if total_predictions > 0 else 0 }}%;"
+                        >
+                        </div>
+
+                    </div>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    {% else %}
+
+        <p class="text-muted">
+            No prediction data available yet.
+        </p>
+
+    {% endif %}
+
+</div>
+<!-- ================= DISEASE STATISTICS ================= -->
+
+<div class="section-title">
+
+    <h2>
+        📊 Disease Statistics
+    </h2>
+
+    <p>
+        Overview of detected crop diseases
+    </p>
+
+</div>
+
+<div class="row g-4">
+
+    {% for disease, count in disease_counts %}
+
+    <div class="col-lg-4 col-md-6">
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                🦠
+            </div>
+
+            <div>
+
+                <h5>
+                    {{ disease }}
+                </h5>
+
+                <h2>
+                    {{ count }}
+                </h2>
+
+                <p>
+                    Prediction{{ 's' if count != 1 else '' }}
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+
+    <!-- ================= INFORMATION ================= -->
+
+    <div class="dashboard-info">
+
+        <div class="info-icon">
+            🤖
+        </div>
+
+        <div>
+
+            <h3>
+                AI Crop Disease Detection
+            </h3>
+
+            <p>
+                Upload clear images of crop leaves to
+                receive an AI-based disease prediction,
+                confidence score, treatment guidance
+                and prevention tips.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            🌱 AgroVision &nbsp;|&nbsp;
+            AI-Powered Crop Disease Detection
+        </p>
+
+    </footer>
+
+</div>
+<!-- ================= DISEASE CHART ================= -->
+
+<div class="analytics-card">
+
+    <div class="analytics-header">
+
+        <h3>📈 Disease Distribution</h3>
+
+        <p>
+            Visual representation of AI prediction results
+        </p>
+
+    </div>
+
+    <div style="max-width: 600px; margin: auto;">
+
+        <canvas id="diseaseChart"></canvas>
+
+    </div>
+
+</div>
+
+
+<!-- Chart.js -->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<script>
+
+const diseaseLabels = [
+    {% for disease, count in disease_counts %}
+        "{{ disease }}"{% if not loop.last %},{% endif %}
+    {% endfor %}
+];
+
+const diseaseValues = [
+    {% for disease, count in disease_counts %}
+        {{ count }}{% if not loop.last %},{% endif %}
+    {% endfor %}
+];
+
+
+const ctx = document.getElementById("diseaseChart");
+
+
+new Chart(ctx, {
+
+    type: "doughnut",
+
+    data: {
+
+        labels: diseaseLabels,
+
+        datasets: [{
+
+            label: "Predictions",
+
+            data: diseaseValues,
+
+            borderWidth: 2
+
+        }]
+
+    },
+
+    options: {
+
+        responsive: true,
+
+        plugins: {
+
+            legend: {
+
+                position: "bottom"
+
+            }
+
+        }
+
+    }
+
+});
+
+</script>
+
+
+</body>
+
+</html>
+```

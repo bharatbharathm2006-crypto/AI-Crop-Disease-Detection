@@ -1,0 +1,662 @@
+body{
+    font-family: Arial, sans-serif;
+    background:#f4fff4;
+}
+
+.hero{
+
+    height:90vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    background:linear-gradient(rgba(0,0,0,.5),
+    rgba(0,0,0,.5)),
+    url("https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1600&auto=format&fit=crop");
+
+    background-size:cover;
+
+    color:white;
+}
+
+.hero h1{
+
+    font-size:60px;
+
+    font-weight:bold;
+}
+
+.hero p{
+
+    font-size:22px;
+}
+
+.card{
+
+    border:none;
+
+    border-radius:20px;
+
+    transition:.4s;
+}
+
+.card:hover{
+
+    transform:translateY(-10px);
+}
+/* ===== AI PREDICTION RESULT ===== */
+
+.prediction-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.prediction-card {
+    background: white;
+    border-radius: 20px;
+    padding: 35px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.prediction-image {
+    width: 320px;
+    max-width: 100%;
+    border-radius: 15px;
+    margin: 20px 0;
+}
+
+.disease-name {
+    font-size: 28px;
+    color: #166534;
+    margin: 15px 0;
+}
+
+.confidence {
+    font-size: 20px;
+    font-weight: bold;
+    color: #374151;
+}
+
+.info-card {
+    text-align: left;
+    background: #f8fafc;
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 20px;
+}
+
+.info-card h2 {
+    color: #166534;
+}
+
+.info-card li {
+    margin: 10px 0;
+}
+
+.back-dashboard {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 12px 25px;
+    background: #2563eb;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+.back-dashboard:hover {
+    background: #1d4ed8;
+}
+/* ===== PROFESSIONAL FARMER DASHBOARD ===== */
+
+body {
+    background: #f4fff4;
+    font-family: Arial, sans-serif;
+    color: #1f2937;
+}
+
+/* Dashboard heading */
+h2 {
+    color: #166534;
+    font-weight: 700;
+}
+
+/* All dashboard cards */
+.card {
+    border: none;
+    border-radius: 18px;
+    background: #ffffff;
+    transition: 0.3s ease;
+    height: 100%;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Card headings */
+.card h3 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.card h4 {
+    color: #166534;
+    font-weight: 600;
+}
+
+/* Statistics numbers */
+.card h2 {
+    color: #15803d;
+    font-size: 32px;
+    margin-top: 12px;
+}
+
+/* Dashboard buttons */
+.btn {
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.btn-success {
+    background: #16a34a;
+    border-color: #16a34a;
+}
+
+.btn-success:hover {
+    background: #15803d;
+    border-color: #15803d;
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    background: #2563eb;
+    border-color: #2563eb;
+}
+
+.btn-primary:hover {
+    background: #1d4ed8;
+    border-color: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+/* Logout button */
+.btn-light {
+    border: 1px solid #d1d5db;
+    font-weight: 600;
+}
+
+.btn-light:hover {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+
+    h2 {
+        font-size: 24px;
+    }
+
+    .card {
+        margin-bottom: 15px;
+    }
+
+    .card h2 {
+        font-size: 28px;
+    }
+
+}
+
+/* ==============================
+   AI RESULT STATUS
+   ============================== */
+
+.result-status {
+    margin: 18px auto;
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-weight: 600;
+    max-width: 500px;
+}
+
+.result-status.success {
+    background: #e8f7ee;
+    color: #187a3d;
+}
+
+.result-status.medium {
+    background: #fff4d6;
+    color: #946200;
+}
+
+.result-status.warning {
+    background: #ffe8e8;
+    color: #a52828;
+}
+
+
+/* ==============================
+   RESULT ACTION BUTTONS
+   ============================== */
+
+.result-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+.result-actions .back-dashboard {
+    text-decoration: none;
+}
+
+
+/* ==============================
+   DISCLAIMER
+   ============================== */
+
+.prediction-note {
+    margin-top: 25px;
+    font-size: 13px;
+    color: #666;
+    line-height: 1.6;
+}
+
+
+/* ==============================
+   MOBILE RESPONSIVE
+   ============================== */
+
+@media (max-width: 600px) {
+
+    .prediction-card {
+        width: 92%;
+        padding: 20px;
+    }
+
+    .prediction-image {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .result-actions {
+        flex-direction: column;
+    }
+
+    .result-actions .back-dashboard {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+
+/* =========================================
+   PREDICTION HISTORY
+   ========================================= */
+
+.history-search {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.history-search .form-control {
+    flex: 1;
+    min-width: 0;
+}
+
+
+/* =========================================
+   HISTORY TABLE
+   ========================================= */
+
+.history-table-container {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 20px;
+    border-radius: 12px;
+}
+
+.history-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 700px;
+    background: white;
+}
+
+.history-table th {
+    padding: 14px 12px;
+    background: #166534;
+    color: white;
+    text-align: center;
+    font-weight: 600;
+}
+
+.history-table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.history-table tbody tr:hover {
+    background: #f0fdf4;
+}
+
+
+/* =========================================
+   HISTORY IMAGE
+   ========================================= */
+
+.history-image {
+    width: 65px;
+    height: 65px;
+    margin: auto;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #f3f4f6;
+}
+
+.history-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* =========================================
+   CONFIDENCE BADGES
+   ========================================= */
+
+.confidence-badge {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.confidence-badge.high {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.confidence-badge.medium {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.confidence-badge.low {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+
+/* =========================================
+   HISTORY SUMMARY
+   ========================================= */
+
+.history-summary {
+    margin-top: 20px;
+    padding: 14px;
+    background: #f0fdf4;
+    border-radius: 10px;
+    text-align: center;
+    color: #166534;
+}
+
+
+/* =========================================
+   EMPTY HISTORY
+   ========================================= */
+
+.empty-history {
+    text-align: center;
+    padding: 45px 20px;
+}
+
+.empty-icon {
+    font-size: 55px;
+    margin-bottom: 10px;
+}
+
+.empty-history h3 {
+    margin-bottom: 8px;
+}
+
+.empty-history p {
+    color: #666;
+    margin-bottom: 22px;
+}
+
+
+/* =========================================
+   HISTORY ACTIONS
+   ========================================= */
+
+.history-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+
+/* =========================================
+   MOBILE HISTORY
+   ========================================= */
+
+@media (max-width: 600px) {
+
+    .history-search {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .history-search .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .history-table {
+        min-width: 650px;
+    }
+
+}
+.delete-btn {
+    background: #dc2626;
+    color: white;
+    border: none;
+    padding: 7px 12px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.delete-btn:hover {
+    background: #b91c1c;
+}
+/* =========================================
+   AI CONFIDENCE BAR
+   ========================================= */
+
+.confidence-bar-container {
+    width: 100%;
+    max-width: 500px;
+    margin: 18px auto;
+}
+
+.confidence-bar {
+    width: 100%;
+    height: 14px;
+    background: #e5e7eb;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.confidence-fill {
+    height: 100%;
+    border-radius: 20px;
+    transition: width 0.8s ease;
+}
+
+.confidence-high {
+    background: #16a34a;
+}
+
+.confidence-medium {
+    background: #f59e0b;
+}
+
+.confidence-low {
+    background: #dc2626;
+}
+
+.confidence-scale {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    font-size: 12px;
+    color: #6b7280;
+}
+/* =========================================
+   PROFESSIONAL UPLOAD PAGE
+   ========================================= */
+
+.upload-card {
+    max-width: 700px;
+    margin: 50px auto;
+    padding: 35px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.10);
+}
+
+.upload-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.upload-icon {
+    font-size: 65px;
+    margin-bottom: 10px;
+}
+
+.upload-header h1 {
+    color: #166534;
+    font-weight: 700;
+}
+
+.upload-header p {
+    color: #6b7280;
+}
+
+.upload-area {
+    border: 2px dashed #16a34a;
+    border-radius: 15px;
+    padding: 35px 20px;
+    text-align: center;
+    background: #f0fdf4;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.upload-area:hover {
+    background: #dcfce7;
+    border-color: #15803d;
+}
+
+.upload-area-icon {
+    font-size: 45px;
+    margin-bottom: 10px;
+}
+
+.upload-area h4 {
+    color: #166534;
+    font-weight: 700;
+}
+
+.upload-area p {
+    color: #6b7280;
+    margin-bottom: 15px;
+}
+
+.upload-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    background: white;
+}
+
+.upload-button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 13px;
+    border: none;
+    border-radius: 10px;
+    background: #16a34a;
+    color: white;
+    font-size: 17px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.upload-button:hover {
+    background: #15803d;
+    transform: translateY(-2px);
+}
+
+.upload-tips {
+    margin-top: 25px;
+    padding: 18px;
+    background: #eff6ff;
+    border-radius: 12px;
+}
+
+.upload-tips h5 {
+    color: #1d4ed8;
+    font-weight: 700;
+}
+
+.upload-tips li {
+    margin: 7px 0;
+    color: #374151;
+}
+
+.upload-back {
+    display: block;
+    width: fit-content;
+    margin: 25px auto 0;
+}
+
+@media (max-width: 600px) {
+
+    .upload-card {
+        width: 92%;
+        padding: 22px;
+        margin: 25px auto;
+    }
+
+    .upload-header h1 {
+        font-size: 25px;
+    }
+
+    .upload-area {
+        padding: 25px 15px;
+    }
+
+}
+

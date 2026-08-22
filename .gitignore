@@ -1,0 +1,17 @@
+venv/
+__pycache__/
+*.pyc
+.DS_Store
+
+agrivision.db
+
+PlantVillage-Dataset/
+PlantVillage/
+
+.env
+
+*.h5
+model/crop_disease_model_balanced.keras
+model/crop_disease_model_correct.keras
+model/crop_disease_model.keras
+static/uploads/

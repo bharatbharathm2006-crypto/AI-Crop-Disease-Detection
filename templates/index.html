@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AgroVision AI | Smart Crop Protection</title>
+
+    <!-- Bootstrap -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- Main CSS -->
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+
+        /* =====================================================
+           AGROVISION AI - HOME PAGE
+           ===================================================== */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4faf5;
+            color: #1f2937;
+        }
+
+
+        /* ================= NAVBAR ================= */
+
+        .home-navbar {
+            background: linear-gradient(
+                135deg,
+                #14532d,
+                #166534,
+                #15803d
+            );
+
+            padding: 15px 0;
+
+            box-shadow:
+                0 5px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .home-brand {
+            color: white !important;
+            font-size: 25px;
+            font-weight: 750;
+        }
+
+        .home-nav-link {
+            color: rgba(255,255,255,0.9) !important;
+            font-weight: 600;
+            margin: 0 6px;
+            transition: 0.3s;
+        }
+
+        .home-nav-link:hover {
+            color: white !important;
+            transform: translateY(-1px);
+        }
+
+        .login-btn {
+            background: white;
+            color: #166534;
+            border: none;
+            border-radius: 9px;
+            padding: 10px 20px;
+            font-weight: 700;
+        }
+
+        .login-btn:hover {
+            background: #dcfce7;
+            color: #14532d;
+        }
+
+        .register-btn {
+            background: #f59e0b;
+            color: white;
+            border: none;
+            border-radius: 9px;
+            padding: 10px 20px;
+            font-weight: 700;
+        }
+
+        .register-btn:hover {
+            background: #d97706;
+            color: white;
+        }
+
+
+        /* ================= HERO ================= */
+
+        .hero-section {
+            min-height: 620px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 70px 0;
+
+            background:
+                radial-gradient(
+                    circle at 80% 30%,
+                    rgba(74, 222, 128, 0.20),
+                    transparent 35%
+                ),
+                linear-gradient(
+                    135deg,
+                    #f0fdf4,
+                    #ffffff
+                );
+        }
+
+        .hero-content {
+            padding-right: 25px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+
+            padding: 9px 16px;
+
+            border-radius: 30px;
+
+            background: #dcfce7;
+
+            color: #166534;
+
+            font-weight: 700;
+
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-size: clamp(38px, 5vw, 64px);
+
+            line-height: 1.1;
+
+            font-weight: 800;
+
+            color: #14532d;
+
+            margin-bottom: 22px;
+        }
+
+        .hero-title span {
+            color: #16a34a;
+        }
+
+        .hero-description {
+            font-size: 19px;
+
+            line-height: 1.7;
+
+            color: #6b7280;
+
+            max-width: 600px;
+
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+
+            gap: 14px;
+
+            flex-wrap: wrap;
+        }
+
+        .hero-primary-btn {
+            background: #16a34a;
+
+            color: white;
+
+            padding: 14px 26px;
+
+            border-radius: 11px;
+
+            text-decoration: none;
+
+            font-weight: 700;
+
+            font-size: 16px;
+
+            transition: 0.3s;
+
+            box-shadow:
+                0 8px 20px rgba(22, 163, 74, 0.25);
+        }
+
+        .hero-primary-btn:hover {
+            background: #15803d;
+
+            color: white;
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 12px 25px rgba(22, 163, 74, 0.30);
+        }
+
+        .hero-secondary-btn {
+            background: white;
+
+            color: #166534;
+
+            padding: 14px 26px;
+
+            border-radius: 11px;
+
+            text-decoration: none;
+
+            font-weight: 700;
+
+            font-size: 16px;
+
+            border: 2px solid #bbf7d0;
+
+            transition: 0.3s;
+        }
+
+        .hero-secondary-btn:hover {
+            background: #f0fdf4;
+
+            color: #14532d;
+
+            transform: translateY(-3px);
+        }
+
+
+        /* ================= HERO VISUAL ================= */
+
+        .hero-visual {
+            position: relative;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            min-height: 450px;
+        }
+
+        .plant-card {
+            width: 390px;
+            height: 390px;
+
+            border-radius: 50%;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #dcfce7,
+                    #bbf7d0
+                );
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            box-shadow:
+                0 25px 60px rgba(22, 101, 52, 0.18);
+
+            position: relative;
+
+            animation: floatPlant 4s ease-in-out infinite;
+        }
+
+        .plant-emoji {
+            font-size: 175px;
+
+            filter:
+                drop-shadow(
+                    0 15px 15px rgba(0,0,0,0.12)
+                );
+        }
+
+        .floating-card {
+            position: absolute;
+
+            background: white;
+
+            padding: 15px 18px;
+
+            border-radius: 14px;
+
+            box-shadow:
+                0 10px 30px rgba(0,0,0,0.12);
+
+            font-weight: 700;
+
+            color: #166534;
+        }
+
+        .floating-card.one {
+            top: 55px;
+            left: 10px;
+        }
+
+        .floating-card.two {
+            right: 0;
+            bottom: 70px;
+        }
+
+        .floating-card.three {
+            left: 35px;
+            bottom: 30px;
+        }
+
+        @keyframes floatPlant {
+
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+
+        }
+
+
+        /* ================= FEATURES ================= */
+
+        .features-section {
+            padding: 80px 0;
+
+            background: white;
+        }
+
+        .section-heading {
+            text-align: center;
+
+            margin-bottom: 45px;
+        }
+
+        .section-heading h2 {
+            color: #14532d;
+
+            font-size: 36px;
+
+            font-weight: 750;
+
+            margin-bottom: 10px;
+        }
+
+        .section-heading p {
+            color: #6b7280;
+
+            font-size: 17px;
+
+            margin: 0;
+        }
+
+        .feature-card {
+            height: 100%;
+
+            padding: 32px 25px;
+
+            background: #ffffff;
+
+            border-radius: 20px;
+
+            text-align: center;
+
+            border: 1px solid #e5e7eb;
+
+            box-shadow:
+                0 8px 25px rgba(0,0,0,0.06);
+
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+
+            box-shadow:
+                0 18px 40px rgba(0,0,0,0.11);
+        }
+
+        .feature-icon {
+            width: 75px;
+            height: 75px;
+
+            margin: 0 auto 20px;
+
+            border-radius: 22px;
+
+            background: #ecfdf5;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 38px;
+        }
+
+        .feature-card h3 {
+            color: #14532d;
+
+            font-size: 21px;
+
+            font-weight: 700;
+
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: #6b7280;
+
+            line-height: 1.7;
+
+            margin: 0;
+        }
+
+
+        /* ================= HOW IT WORKS ================= */
+
+        .steps-section {
+            padding: 80px 0;
+
+            background: #f0fdf4;
+        }
+
+        .step-card {
+            text-align: center;
+
+            padding: 25px;
+        }
+
+        .step-number {
+            width: 55px;
+            height: 55px;
+
+            margin: 0 auto 18px;
+
+            border-radius: 50%;
+
+            background: #16a34a;
+
+            color: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 20px;
+
+            font-weight: 700;
+        }
+
+        .step-card h4 {
+            color: #14532d;
+
+            font-weight: 700;
+        }
+
+        .step-card p {
+            color: #6b7280;
+
+            line-height: 1.6;
+        }
+
+
+        /* ================= CTA ================= */
+
+        .cta-section {
+            padding: 70px 20px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #14532d,
+                    #15803d
+                );
+
+            text-align: center;
+
+            color: white;
+        }
+
+        .cta-section h2 {
+            font-size: 38px;
+
+            font-weight: 750;
+
+            margin-bottom: 15px;
+        }
+
+        .cta-section p {
+            font-size: 17px;
+
+            opacity: 0.9;
+
+            margin-bottom: 25px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+
+            background: white;
+
+            color: #166534;
+
+            padding: 14px 28px;
+
+            border-radius: 10px;
+
+            text-decoration: none;
+
+            font-weight: 700;
+
+            transition: 0.3s;
+        }
+
+        .cta-btn:hover {
+            background: #dcfce7;
+
+            color: #14532d;
+
+            transform: translateY(-3px);
+        }
+
+
+        /* ================= FOOTER ================= */
+
+        .home-footer {
+            background: #052e16;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 25px 15px;
+        }
+
+        .home-footer p {
+            margin: 0;
+
+            opacity: 0.85;
+
+            font-size: 14px;
+        }
+
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 991px) {
+
+            .hero-section {
+                text-align: center;
+
+                padding: 55px 0;
+            }
+
+            .hero-content {
+                padding-right: 0;
+            }
+
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                margin-top: 50px;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .hero-title {
+                font-size: 38px;
+            }
+
+            .hero-description {
+                font-size: 16px;
+            }
+
+            .plant-card {
+                width: 280px;
+                height: 280px;
+            }
+
+            .plant-emoji {
+                font-size: 120px;
+            }
+
+            .floating-card {
+                font-size: 12px;
+
+                padding: 10px 12px;
+            }
+
+            .floating-card.one {
+                left: 0;
+            }
+
+            .floating-card.two {
+                right: 0;
+            }
+
+            .section-heading h2 {
+                font-size: 29px;
+            }
+
+            .cta-section h2 {
+                font-size: 29px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+     ===================================================== -->
+
+<nav class="navbar navbar-expand-lg home-navbar">
+
+    <div class="container">
+
+        <a class="navbar-brand home-brand" href="/">
+            🌱 AgroVision AI
+        </a>
+
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#menu">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+
+        <div class="collapse navbar-collapse" id="menu">
+
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+
+                <li class="nav-item">
+                    <a class="nav-link home-nav-link" href="/">
+                        Home
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link home-nav-link" href="#about">
+                        About
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link home-nav-link" href="#features">
+                        Features
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link home-nav-link" href="#contact">
+                        Contact
+                    </a>
+                </li>
+
+                <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+
+                    <a
+                        class="btn login-btn"
+                        href="/login">
+
+                        Login
+
+                    </a>
+
+                </li>
+
+                <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+
+                    <a
+                        class="btn register-btn"
+                        href="/register">
+
+                        Register
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =====================================================
+     HERO
+     ===================================================== -->
+
+<section class="hero-section">
+
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <!-- LEFT -->
+
+            <div class="col-lg-6">
+
+                <div class="hero-content">
+
+                    <div class="hero-badge">
+                        🌱 AI-Powered Smart Farming
+                    </div>
+
+
+                    <h1 class="hero-title">
+
+                        Protect Your Crops
+                        with <span>Artificial Intelligence</span>
+
+                    </h1>
+
+
+                    <p class="hero-description">
+
+                        Detect crop diseases using AI,
+                        monitor your crops, understand
+                        disease conditions and make
+                        smarter farming decisions.
+
+                    </p>
+
+
+                    <div class="hero-buttons">
+
+                        <a
+                            href="/login"
+                            class="hero-primary-btn">
+
+                            🚀 Start Detecting
+
+                        </a>
+
+
+                        <a
+                            href="#features"
+                            class="hero-secondary-btn">
+
+                            🔍 Explore Features
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- RIGHT -->
+
+            <div class="col-lg-6">
+
+                <div class="hero-visual">
+
+                    <div class="plant-card">
+
+                        <div class="plant-emoji">
+                            🌿
+                        </div>
+
+                    </div>
+
+
+                    <div class="floating-card one">
+                        🤖 AI Detection
+                    </div>
+
+
+                    <div class="floating-card two">
+                        🌱 Crop Health
+                    </div>
+
+
+                    <div class="floating-card three">
+                        📊 Smart Analysis
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FEATURES
+     ===================================================== -->
+
+<section
+    class="features-section"
+    id="features">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <h2>
+                Why Choose AgroVision AI?
+            </h2>
+
+            <p>
+                Smart technology to help farmers protect
+                their crops and improve decision-making.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+
+            <!-- FEATURE 1 -->
+
+            <div class="col-md-4">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        🤖
+                    </div>
+
+                    <h3>
+                        AI Disease Detection
+                    </h3>
+
+                    <p>
+                        Upload a crop leaf image and
+                        receive an AI-based disease
+                        prediction with confidence.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- FEATURE 2 -->
+
+            <div class="col-md-4">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        ⚡
+                    </div>
+
+                    <h3>
+                        Fast Analysis
+                    </h3>
+
+                    <p>
+                        Get crop disease predictions
+                        quickly and easily through
+                        the AgroVision system.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- FEATURE 3 -->
+
+            <div class="col-md-4">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        🌱
+                    </div>
+
+                    <h3>
+                        Farmer Friendly
+                    </h3>
+
+                    <p>
+                        A simple interface designed
+                        to make AI-based crop monitoring
+                        easy for farmers.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- FEATURE 4 -->
+
+            <div class="col-md-4">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        🌦️
+                    </div>
+
+                    <h3>
+                        Weather Monitoring
+                    </h3>
+
+                    <p>
+                        Monitor weather conditions that
+                        can affect crop growth, irrigation
+                        and disease development.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- FEATURE 5 -->
+
+            <div class="col-md-4">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        🤖
+                    </div>
+
+                    <h3>
+                        AI Chat Assistant
+                    </h3>
+
+                    <p>
+                        Ask questions about crop diseases,
+                        prevention, irrigation and farming.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- FEATURE 6 -->
+
+            <div class="col-md-4">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        📊
+                    </div>
+
+                    <h3>
+                        Prediction History
+                    </h3>
+
+                    <p>
+                        Keep track of previous predictions,
+                        diseases and confidence scores.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     HOW IT WORKS
+     ===================================================== -->
+
+<section class="steps-section" id="about">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <h2>
+                How AgroVision Works
+            </h2>
+
+            <p>
+                Detect crop diseases in three simple steps.
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+
+            <div class="col-md-4">
+
+                <div class="step-card">
+
+                    <div class="step-number">
+                        1
+                    </div>
+
+                    <h4>
+                        📸 Upload Leaf
+                    </h4>
+
+                    <p>
+                        Upload a clear image of
+                        the affected crop leaf.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="step-card">
+
+                    <div class="step-number">
+                        2
+                    </div>
+
+                    <h4>
+                        🤖 AI Analysis
+                    </h4>
+
+                    <p>
+                        Our trained AI model analyzes
+                        the crop image.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="step-card">
+
+                    <div class="step-number">
+                        3
+                    </div>
+
+                    <h4>
+                        📊 Get Result
+                    </h4>
+
+                    <p>
+                        View the predicted disease,
+                        confidence and guidance.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     CALL TO ACTION
+     ===================================================== -->
+
+<section class="cta-section" id="contact">
+
+    <div class="container">
+
+        <h2>
+            🌾 Ready to Protect Your Crops?
+        </h2>
+
+        <p>
+            Start using AgroVision AI for smarter
+            crop disease monitoring.
+        </p>
+
+        <a
+            href="/register"
+            class="cta-btn">
+
+            🚀 Create Farmer Account
+
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+
+<footer class="home-footer">
+
+    <p>
+        🌱 AgroVision AI &nbsp; | &nbsp;
+        AI-Powered Crop Disease Detection
+    </p>
+
+    <p class="mt-2">
+        © 2026 AgroVision AI. All rights reserved.
+    </p>
+
+</footer>
+
+
+
+<!-- Bootstrap JavaScript -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+</body>
+
+</html>

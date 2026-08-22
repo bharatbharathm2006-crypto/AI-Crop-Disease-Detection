@@ -1,0 +1,702 @@
+/* =========================================================
+   AGROVISION - PROFESSIONAL FARMER DASHBOARD
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f3f8f4;
+    color: #1f2937;
+}
+
+
+/* =========================================================
+   NAVIGATION BAR
+   ========================================================= */
+
+.dashboard-navbar {
+    background: linear-gradient(135deg, #14532d, #166534, #15803d);
+    padding: 15px 0;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.dashboard-navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    color: white;
+    font-size: 25px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.profile-link {
+    color: white;
+    text-decoration: none;
+    padding: 10px 17px;
+    border-radius: 9px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.profile-link:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+}
+
+.logout-btn {
+    background: white;
+    color: #166534;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 9px;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.logout-btn:hover {
+    background: #dcfce7;
+    color: #14532d;
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   MAIN DASHBOARD
+   ========================================================= */
+
+.dashboard-container {
+    padding-top: 35px;
+    padding-bottom: 50px;
+}
+
+
+/* =========================================================
+   WELCOME SECTION
+   ========================================================= */
+
+.welcome-section {
+    text-align: center;
+    padding: 35px 20px;
+    margin-bottom: 30px;
+
+    background: linear-gradient(
+        135deg,
+        #ecfdf5,
+        #f0fdf4,
+        #ffffff
+    );
+
+    border-radius: 22px;
+
+    border: 1px solid #dcfce7;
+
+    box-shadow:
+        0 8px 25px rgba(22, 101, 52, 0.08);
+}
+
+.welcome-section h1 {
+    margin: 0;
+    font-size: 38px;
+    font-weight: 750;
+    color: #14532d;
+}
+
+.welcome-section p {
+    margin-top: 12px;
+    margin-bottom: 0;
+    color: #6b7280;
+    font-size: 17px;
+}
+
+
+/* =========================================================
+   STATISTICS CARDS
+   ========================================================= */
+
+.stat-card {
+    height: 100%;
+    min-height: 145px;
+
+    background: white;
+
+    border-radius: 18px;
+
+    padding: 24px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 20px;
+
+    border-left: 5px solid #166534;
+
+    box-shadow:
+        0 7px 22px rgba(0, 0, 0, 0.07);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+.stat-icon {
+    width: 65px;
+    height: 65px;
+
+    flex-shrink: 0;
+
+    border-radius: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 31px;
+
+    background: #f0fdf4;
+}
+
+.stat-card h5 {
+    margin: 0 0 5px;
+
+    font-size: 15px;
+
+    color: #6b7280;
+
+    font-weight: 600;
+}
+
+.stat-card h2 {
+    margin: 0;
+
+    font-size: 31px;
+
+    color: #166534;
+
+    font-weight: 750;
+}
+
+.stat-card p {
+    margin: 5px 0 0;
+
+    font-size: 13px;
+
+    color: #9ca3af;
+}
+
+
+/* =========================================================
+   INDIVIDUAL STATISTIC COLORS
+   ========================================================= */
+
+.stat-card:not(.healthy-card):not(.disease-card):not(.confidence-card) {
+    border-left-color: #166534;
+}
+
+.healthy-card {
+    border-left-color: #16a34a;
+}
+
+.healthy-card .stat-icon {
+    background: #dcfce7;
+}
+
+.healthy-card h2 {
+    color: #16a34a;
+}
+
+.disease-card {
+    border-left-color: #dc2626;
+}
+
+.disease-card .stat-icon {
+    background: #fee2e2;
+}
+
+.disease-card h2 {
+    color: #dc2626;
+}
+
+.confidence-card {
+    border-left-color: #2563eb;
+}
+
+.confidence-card .stat-icon {
+    background: #dbeafe;
+}
+
+.confidence-card h2 {
+    color: #2563eb;
+}
+
+
+/* =========================================================
+   SECTION TITLES
+   ========================================================= */
+
+.section-title {
+    margin-top: 50px;
+    margin-bottom: 25px;
+}
+
+.section-title h2 {
+    margin-bottom: 5px;
+
+    color: #166534;
+
+    font-size: 28px;
+
+    font-weight: 750;
+}
+
+.section-title p {
+    margin: 0;
+
+    color: #6b7280;
+
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   QUICK ACTION CARDS
+   ========================================================= */
+
+.action-card {
+    height: 100%;
+
+    min-height: 300px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    padding: 30px 25px;
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.07);
+
+    border: 1px solid #e5e7eb;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.action-card:hover {
+    transform: translateY(-8px);
+
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.13);
+}
+
+.action-icon {
+    width: 75px;
+    height: 75px;
+
+    border-radius: 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #ecfdf5;
+
+    font-size: 38px;
+
+    margin-bottom: 18px;
+}
+
+.action-card h3 {
+    margin: 0 0 12px;
+
+    font-size: 21px;
+
+    color: #166534;
+
+    font-weight: 700;
+}
+
+.action-card p {
+    color: #6b7280;
+
+    line-height: 1.6;
+
+    margin-bottom: 22px;
+
+    max-width: 300px;
+}
+
+.action-btn {
+    display: inline-block;
+
+    margin-top: auto;
+
+    padding: 12px 23px;
+
+    border-radius: 10px;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    transition: 0.3s;
+}
+
+.action-btn:hover {
+    color: white;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+.green-btn {
+    background: #16a34a;
+}
+
+.green-btn:hover {
+    background: #15803d;
+}
+
+.blue-btn {
+    background: #2563eb;
+}
+
+.blue-btn:hover {
+    background: #1d4ed8;
+}
+
+.purple-btn {
+    background: #7c3aed;
+}
+
+.purple-btn:hover {
+    background: #6d28d9;
+}
+
+
+/* =========================================================
+   DISEASE ANALYTICS
+   ========================================================= */
+
+.analytics-card {
+    background: white;
+
+    border-radius: 20px;
+
+    padding: 30px;
+
+    margin-top: 25px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.07);
+
+    border: 1px solid #e5e7eb;
+}
+
+.analytics-header {
+    margin-bottom: 25px;
+}
+
+.analytics-header h3 {
+    margin: 0;
+
+    color: #166534;
+
+    font-size: 22px;
+}
+
+.analytics-header p {
+    margin-top: 7px;
+
+    color: #6b7280;
+}
+
+
+/* =========================================================
+   DISEASE LIST
+   ========================================================= */
+
+.disease-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+.disease-row {
+    width: 100%;
+}
+
+.disease-info {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 7px;
+}
+
+.disease-name {
+    font-weight: 600;
+
+    color: #374151;
+}
+
+.disease-count {
+    font-weight: 700;
+
+    color: #166534;
+}
+
+.disease-bar {
+    height: 11px;
+
+    background: #e5e7eb;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+.disease-progress {
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        #16a34a,
+        #4ade80
+    );
+
+    border-radius: 20px;
+
+    transition: width 0.8s ease;
+}
+
+
+/* =========================================================
+   DISEASE STATISTICS
+   ========================================================= */
+
+.analytics-card + .section-title {
+    margin-top: 45px;
+}
+
+.stat-card h5 {
+    word-break: break-word;
+}
+
+
+/* =========================================================
+   INFORMATION CARD
+   ========================================================= */
+
+.dashboard-info {
+    margin-top: 45px;
+
+    background: linear-gradient(
+        135deg,
+        #14532d,
+        #166534,
+        #15803d
+    );
+
+    color: white;
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 22px;
+
+    box-shadow:
+        0 12px 30px rgba(22, 101, 52, 0.18);
+}
+
+.info-icon {
+    width: 65px;
+    height: 65px;
+
+    flex-shrink: 0;
+
+    border-radius: 18px;
+
+    background: rgba(255,255,255,0.16);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 32px;
+}
+
+.dashboard-info h3 {
+    margin: 0 0 8px;
+
+    font-size: 23px;
+}
+
+.dashboard-info p {
+    margin: 0;
+
+    line-height: 1.7;
+
+    opacity: 0.92;
+}
+
+
+/* =========================================================
+   CHART
+   ========================================================= */
+
+#diseaseChart {
+    max-height: 420px;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+    margin-top: 45px;
+
+    padding: 25px;
+
+    text-align: center;
+
+    border-top: 1px solid #d1d5db;
+
+    color: #6b7280;
+
+    font-size: 14px;
+}
+
+footer p {
+    margin: 0;
+}
+
+
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .dashboard-container {
+        padding-top: 20px;
+    }
+
+    .welcome-section h1 {
+        font-size: 29px;
+    }
+
+    .welcome-section p {
+        font-size: 15px;
+    }
+
+    .dashboard-navbar .container {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .brand {
+        font-size: 20px;
+    }
+
+    .profile-link {
+        display: none;
+    }
+
+    .stat-card {
+        min-height: 125px;
+    }
+
+    .action-card {
+        min-height: 280px;
+    }
+
+    .dashboard-info {
+        flex-direction: column;
+        text-align: center;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .nav-actions {
+        gap: 5px;
+    }
+
+    .logout-btn {
+        padding: 8px 13px;
+        font-size: 14px;
+    }
+
+    .welcome-section {
+        padding: 25px 15px;
+    }
+
+    .welcome-section h1 {
+        font-size: 25px;
+    }
+
+    .stat-card {
+        padding: 18px;
+    }
+
+    .stat-icon {
+        width: 55px;
+        height: 55px;
+        font-size: 25px;
+    }
+
+    .stat-card h2 {
+        font-size: 25px;
+    }
+
+    .analytics-card {
+        padding: 20px;
+    }
+
+}
