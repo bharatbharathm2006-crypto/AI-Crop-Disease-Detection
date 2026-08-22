@@ -94,7 +94,4 @@ AI-Crop-Disease-Detection/
 ## 📸 Project Screenshots
 
 ### 🏠 Home Page
-![AgroVision AI Home Page](screenshots/homepage.png)
-
-### 📊 Dashboard
-![AgroVision AI Dashboard](screenshots/dashboard.png)
+![AgroVision AI Home Page](homepage.png)
