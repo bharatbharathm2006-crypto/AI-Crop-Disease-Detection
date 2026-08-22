@@ -98,3 +98,6 @@ AI-Crop-Disease-Detection/
 
 ### 📊 Farmer Dashboard
 ![AgroVision AI Dashboard](dashboard.png)
+### 🔬 Disease Prediction Result
+
+![AI Crop Disease Detection Result](screenshots/result.png)
