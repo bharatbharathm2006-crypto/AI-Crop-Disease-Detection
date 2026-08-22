@@ -95,3 +95,6 @@ AI-Crop-Disease-Detection/
 
 ### 🏠 Home Page
 ![AgroVision AI Home Page](homepage.png)
+
+### 📊 Farmer Dashboard
+![AgroVision AI Dashboard](dashboard.png)
